@@ -5,7 +5,7 @@ import VideoPlayer from '../../components/VideoPlayer';
 import {
   Settings, Users, BarChart, FileVideo,
   PlayCircle, Play, Smartphone, RefreshCw,
-  FolderPlus, Calendar, Youtube, Wifi, ArrowLeftRight
+  FolderPlus, Calendar, Youtube, Wifi, ArrowLeftRight, Megaphone
 } from 'lucide-react';
 
 const Dashboard: React.FC = () => {
@@ -173,8 +173,6 @@ const Dashboard: React.FC = () => {
               <span className="text-sm text-gray-700 text-center">Gerenciar Vídeos</span>
             </Link>
 
-
-            {/* Aqui está o link adicionado */}
             <Link to="/dashboard/playlists" className="flex flex-col items-center justify-center p-3 hover:bg-gray-50 rounded-lg transition-colors">
               <div className="w-12 h-12 flex items-center justify-center bg-primary-100 text-primary-600 rounded-full mb-2">
                 <FolderPlus className="h-6 w-6" />
@@ -192,6 +190,15 @@ const Dashboard: React.FC = () => {
               <span className="text-sm text-gray-700 text-center">Agendar Playlists</span>
             </Link>
 
+            <Link
+              to="/dashboard/comerciais"
+              className="flex flex-col items-center justify-center p-3 hover:bg-gray-50 rounded-lg transition-colors"
+            >
+              <div className="w-12 h-12 flex items-center justify-center bg-primary-100 text-primary-600 rounded-full mb-2">
+                <Megaphone className="h-6 w-6" />
+              </div>
+              <span className="text-sm text-gray-700 text-center">Gerenciar Comerciais</span>
+            </Link>
 
             <div className="flex flex-col items-center justify-center p-3 hover:bg-gray-50 rounded-lg transition-colors">
               <div className="w-12 h-12 flex items-center justify-center bg-primary-100 text-primary-600 rounded-full mb-2">

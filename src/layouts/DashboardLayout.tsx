@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, NavLink, useLocation } from 'react-router-dom';
-import { Menu, FileVideo, LogOut, User, Settings, Bell } from 'lucide-react';
+import { Menu, FileVideo, LogOut, User, Settings, Bell, Megaphone } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import Logo from '/logo.png';
@@ -180,6 +180,48 @@ const DashboardLayout: React.FC = () => {
                     <FileVideo className="h-5 w-5" />
                   </span>
                   <span>Playlists</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/agendamentos"
+                  className={({ isActive }) =>
+                    `flex items-center px-4 py-3 text-gray-700 rounded-lg ${
+                      isActive ? 'bg-primary-50 text-primary-700' : 'hover:bg-gray-100'
+                    }`
+                  }
+                >
+                  <span className="mr-3">
+                    <svg
+                      className="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </span>
+                  <span>Agendamentos</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/comerciais"
+                  className={({ isActive }) =>
+                    `flex items-center px-4 py-3 text-gray-700 rounded-lg ${
+                      isActive ? 'bg-primary-50 text-primary-700' : 'hover:bg-gray-100'
+                    }`
+                  }
+                >
+                  <span className="mr-3">
+                    <Megaphone className="h-5 w-5" />
+                  </span>
+                  <span>Comerciais</span>
                 </NavLink>
               </li>
             </ul>
