@@ -1,0 +1,21 @@
+{
+  "name": "backend-api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.2.0",
+    "axios": "^1.10.0",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1",
+    "node-ssh": "^13.2.1",
+    "youtube-dl-exec": "^3.0.22",
+    "ytdl-core": "^4.11.5"
+  }
+}
