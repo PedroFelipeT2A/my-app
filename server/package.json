@@ -1,0 +1,28 @@
+{
+  "name": "backend-api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
+    "@heroicons/react": "^2.2.0",
+    "axios": "^1.10.0",
+    "basic-ftp": "^5.0.5",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "geoip-lite": "^1.4.10",
+    "mysql2": "^3.14.1",
+    "node-ssh": "^13.2.1",
+    "sanitize-filename": "^1.6.3",
+    "youtube-dl-exec": "^3.0.22",
+    "ytdl-core": "^4.11.5"
+  }
+}
