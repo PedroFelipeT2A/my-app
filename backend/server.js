@@ -8,6 +8,10 @@ const authRoutes = require('./routes/auth');
 const foldersRoutes = require('./routes/folders');
 const videosRoutes = require('./routes/videos');
 const playlistsRoutes = require('./routes/playlists');
+const agendamentosRoutes = require('./routes/agendamentos');
+const comerciaisRoutes = require('./routes/comerciais');
+const downloadyoutubeRoutes = require('./routes/downloadyoutube');
+const espectadoresRoutes = require('./routes/espectadores');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -25,6 +29,10 @@ app.use('/api/auth', authRoutes);
 app.use('/api/folders', foldersRoutes);
 app.use('/api/videos', videosRoutes);
 app.use('/api/playlists', playlistsRoutes);
+app.use('/api/agendamentos', agendamentosRoutes);
+app.use('/api/comerciais', comerciaisRoutes);
+app.use('/api/downloadyoutube', downloadyoutubeRoutes);
+app.use('/api/espectadores', espectadoresRoutes);
 
 // Rota de teste
 app.get('/api/test', (req, res) => {
