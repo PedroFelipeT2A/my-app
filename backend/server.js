@@ -1,0 +1,95 @@
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
+const db = require('./config/database');
+
+// Importar rotas
+const authRoutes = require('./routes/auth');
+const foldersRoutes = require('./routes/folders');
+const videosRoutes = require('./routes/videos');
+const playlistsRoutes = require('./routes/playlists');
+
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+// Middlewares
+app.use(cors());
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+
+// Servir arquivos estáticos do Wowza
+app.use('/content', express.static('/usr/local/WowzaStreamingEngine/content'));
+
+// Rotas da API
+app.use('/api/auth', authRoutes);
+app.use('/api/folders', foldersRoutes);
+app.use('/api/videos', videosRoutes);
+app.use('/api/playlists', playlistsRoutes);
+
+// Rota de teste
+app.get('/api/test', (req, res) => {
+  res.json({ message: 'API funcionando!', timestamp: new Date().toISOString() });
+});
+
+// Rota de health check
+app.get('/api/health', async (req, res) => {
+  try {
+    const dbConnected = await db.testConnection();
+    res.json({
+      status: 'ok',
+      database: dbConnected ? 'connected' : 'disconnected',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: 'error',
+      database: 'disconnected',
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Middleware de tratamento de erros
+app.use((error, req, res, next) => {
+  console.error('Erro não tratado:', error);
+  
+  if (error.code === 'LIMIT_FILE_SIZE') {
+    return res.status(413).json({ error: 'Arquivo muito grande' });
+  }
+  
+  if (error.message.includes('Tipo de arquivo não suportado')) {
+    return res.status(400).json({ error: 'Tipo de arquivo não suportado' });
+  }
+  
+  res.status(500).json({ error: 'Erro interno do servidor' });
+});
+
+// Rota 404
+app.use('*', (req, res) => {
+  res.status(404).json({ error: 'Rota não encontrada' });
+});
+
+// Iniciar servidor
+async function startServer() {
+  try {
+    // Testar conexão com banco
+    const dbConnected = await db.testConnection();
+    
+    if (!dbConnected) {
+      console.error('❌ Não foi possível conectar ao banco de dados');
+      process.exit(1);
+    }
+
+    app.listen(PORT, () => {
+      console.log(`🚀 Servidor rodando na porta ${PORT}`);
+      console.log(`📊 Health check: http://localhost:${PORT}/api/health`);
+      console.log(`🔧 API test: http://localhost:${PORT}/api/test`);
+    });
+  } catch (error) {
+    console.error('❌ Erro ao iniciar servidor:', error);
+    process.exit(1);
+  }
+}
+
+startServer();
