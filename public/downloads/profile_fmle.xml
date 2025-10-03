@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FMLEDocument version="2.0">
+  <FMLEProfile>
+    <VideoDevice>
+      <Name>Screen Capture</Name>
+      <CaptureWidth>1920</CaptureWidth>
+      <CaptureHeight>1080</CaptureHeight>
+      <CaptureFrameRate>30</CaptureFrameRate>
+    </VideoDevice>
+    
+    <AudioDevice>
+      <Name>Default Audio Device</Name>
+      <SampleRate>44100</SampleRate>
+      <Channels>2</Channels>
+    </AudioDevice>
+    
+    <VideoEncoder>
+      <Codec>H.264</Codec>
+      <Bitrate>2000</Bitrate>
+      <Quality>High</Quality>
+      <KeyFrameInterval>2</KeyFrameInterval>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <FrameRate>30</FrameRate>
+    </VideoEncoder>
+    
+    <AudioEncoder>
+      <Codec>AAC</Codec>
+      <Bitrate>128</Bitrate>
+      <SampleRate>44100</SampleRate>
+      <Channels>2</Channels>
+    </AudioEncoder>
+    
+    <Output>
+      <Format>FLV</Format>
+      <URL>rtmp://stmv1.udicast.com:1935/[USUARIO]</URL>
+      <Stream>live</Stream>
+      <Username>[USUARIO]</Username>
+      <Password>[SENHA]</Password>
+    </Output>
+    
+    <Settings>
+      <BufferTime>3</BufferTime>
+      <ConnectTimeout>30</ConnectTimeout>
+      <ReconnectAttempts>5</ReconnectAttempts>
+      <ReconnectInterval>10</ReconnectInterval>
+    </Settings>
+  </FMLEProfile>
+</FMLEDocument>
